@@ -1,12 +1,14 @@
 package swing;
 
+import Class.utilisateur;
+
 import javax.swing.*;
 import java.awt.*;
-
+import java.util.ArrayList;
 public class Login extends JFrame {
     private JLabel jLabel1;
     private JTextField username;
-    private JTextField password;
+    private JPasswordField password;
     private JButton login;
     private JButton cancel;
 
@@ -15,11 +17,6 @@ public class Login extends JFrame {
     }
 
     public static void main(String[] args) {
-        try {
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         new Login().setVisible(true);
     }
 
@@ -29,7 +26,7 @@ public class Login extends JFrame {
         setSize(300, 200);
 
         username = new JTextField();
-        password = new JTextField();
+        password = new JPasswordField();
         jLabel1 = new JLabel("Login Form");
 
         JPanel p1 = new JPanel();
@@ -54,11 +51,14 @@ public class Login extends JFrame {
         login.addActionListener(e -> {
             String user = username.getText();
             String pass = password.getText();
-            if (user.equals("admin") && pass.equals("admin")) {
-                JOptionPane.showMessageDialog(null, "Login success");
-                this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(null, "Login failed");
+            ArrayList<utilisateur> admins = mainTest.b1.getAdmins();
+            for (utilisateur admin : admins) {
+                if (admin.getnom().equals(user) && password.getText().equals("0000")) {
+                    Menu menu = new Menu();
+                    menu.setVisible(true);
+                    this.dispose();
+                    return;
+                }
             }
         });
 

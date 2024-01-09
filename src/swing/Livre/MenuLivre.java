@@ -28,8 +28,9 @@ public class MenuLivre extends JFrame {
         p1.setLayout(new GridLayout(4, 1));
         p1.add(ajouter);
         p1.add(lister);
-        p1.add(supprimer);
+
         p1.add(modifier);
+        p1.add(supprimer);
         p1.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         this.add(p1);
 

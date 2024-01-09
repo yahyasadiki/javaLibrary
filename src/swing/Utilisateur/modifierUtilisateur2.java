@@ -29,11 +29,12 @@ public class modifierUtilisateur2 extends JFrame {
         JTextField nom = new JTextField(user.getnom());
         p2.add(nom);
         p2.add(new JLabel("Prénom de l'utilisateur :"));
-        JTextField prenom = new JTextField(user.getnom());
+        JTextField prenom = new JTextField();
         p2.add(prenom);
         JSpinner age = new JSpinner();
         age.setModel(new SpinnerNumberModel(0, 0, 100, 1));
         p2.add(new JLabel("Age de l'utilisateur :"));
+        age.setValue(user.age());
         p2.add(age);
         this.add(p2, BorderLayout.CENTER);
 

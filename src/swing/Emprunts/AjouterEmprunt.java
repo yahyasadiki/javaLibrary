@@ -1,6 +1,8 @@
 package swing.Emprunts;
 
-import Class.*;
+import Class.emprunts;
+import Class.livre;
+import Class.utilisateur;
 import swing.mainTest;
 
 import javax.swing.*;
@@ -74,10 +76,11 @@ public class AjouterEmprunt extends javax.swing.JFrame {
         btnAjouter.addActionListener(e -> {
             String nomLivre = (String) this.nomLivre.getSelectedItem();
 
+
             livre livre = mainTest.b1.getLivres().stream().filter(l -> l.titre().equals(nomLivre)).findFirst().orElse(null);
             String nomEmprunteur = (String) this.nomEmprunteur.getSelectedItem();
 
-            utilisateur emprunteur = mainTest.b1.getEmprunteurs().stream().filter(u -> u.getnom().equals(nomEmprunteur)).findFirst().orElse(null);
+            utilisateur emprunteur = mainTest.b1.getAdherents().stream().filter(u -> u.getnom().equals(nomEmprunteur)).findFirst().orElse(null);
             int dateRetourParSemaine = (int) this.dateRetourParSemaine.getSelectedItem();
             Date dateRetour = new Date();
             dateRetour.setDate(dateRetour.getDate() + dateRetourParSemaine * 7);

@@ -1,6 +1,5 @@
 package Class;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -31,14 +30,17 @@ public class emprunts {
         dateRetourPrevue = calendar.getTime();
     }
 
-    public void rendreLivre(Date dateRetour) {
+    public int rendreLivre(Date dateRetour) {
         Calendar dRetour = Calendar.getInstance();
         dRetour.setTime(dateRetour);
         int a = dRetour.get(Calendar.DAY_OF_MONTH) - dateRetourPrevue.getDate();
-        if (a > 0) {
-            System.out.println("Non rendu à temps, payer une amende (5dh/jour) = " + a * 5 + "dh");
-        }
         this.dateRetourEffective = dateRetour;
+        if (a > 0) {
+            return a;
+        } else {
+            return 0;
+        }
+
     }
 
     @Override
@@ -89,8 +91,6 @@ public class emprunts {
     public Date getDateRetourEffective() {
         return dateRetourEffective;
     }
-
-
 
 
     public String getDateEmpruntDDMMYYYY() {

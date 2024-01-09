@@ -5,6 +5,7 @@ import javax.swing.*;
 public class MenuEmprunts extends javax.swing.JFrame {
     private JButton btnAjouter;
     private JButton btnRetourner;
+    private JButton btnProlonger;
 
     public MenuEmprunts() {
         initComponents();
@@ -17,6 +18,7 @@ public class MenuEmprunts extends javax.swing.JFrame {
     public void initComponents() {
         btnAjouter = new JButton("Ajouter");
         btnRetourner = new JButton("Retourner un emprunt");
+        btnProlonger = new JButton("Prolonger un emprunt");
 
 
         this.setTitle("Menu Emprunts");
@@ -27,6 +29,7 @@ public class MenuEmprunts extends javax.swing.JFrame {
         JPanel panel = new JPanel();
         panel.add(btnAjouter);
         panel.add(btnRetourner);
+        panel.add(btnProlonger);
 
 
         btnAjouter.addActionListener(e -> {
@@ -37,6 +40,11 @@ public class MenuEmprunts extends javax.swing.JFrame {
         btnRetourner.addActionListener(e -> {
             retournerEmprunts re = new retournerEmprunts();
             re.setVisible(true);
+        });
+
+        btnProlonger.addActionListener(e -> {
+            prolongerEmprunt pe = new prolongerEmprunt();
+            pe.setVisible(true);
         });
         this.setContentPane(panel);
         this.setVisible(true);

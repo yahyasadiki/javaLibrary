@@ -11,6 +11,7 @@ public class Menu extends JFrame {
     private JButton livre;
     private JButton utilisateur;
     private JButton emprunt;
+    private JButton statistique;
 
 
     public Menu() {
@@ -37,12 +38,14 @@ public class Menu extends JFrame {
         livre = new JButton("Livre");
         utilisateur = new JButton("Utilisateur");
         emprunt = new JButton("Emprunt");
+        statistique = new JButton("Statistique");
 
         JPanel p1 = new JPanel();
-        p1.setLayout(new GridLayout(3, 1));
+        p1.setLayout(new GridLayout(4, 1));
         p1.add(livre);
         p1.add(utilisateur);
         p1.add(emprunt);
+        p1.add(statistique);
         p1.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         this.add(p1, BorderLayout.CENTER);
 
@@ -67,6 +70,11 @@ public class Menu extends JFrame {
             }
         });
 
-
+        statistique.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                swing.biblioteque.Statistique s = new swing.biblioteque.Statistique();
+                s.setVisible(true);
+            }
+        });
     }
 }

@@ -17,6 +17,36 @@ public class bibliotheque {
         emprunts = new ArrayList<emprunts>();
     }
 
+    public ArrayList<utilisateur> getAdmins() {
+        ArrayList<utilisateur> admins = new ArrayList<>();
+        for (utilisateur utilisateur : emprunteurs) {
+            if (utilisateur.role().equals("admin")) {
+                admins.add(utilisateur);
+            }
+        }
+        return admins;
+    }
+
+    public ArrayList<utilisateur> getAdherents() {
+        ArrayList<utilisateur> adherents = new ArrayList<>();
+        for (utilisateur utilisateur : emprunteurs) {
+            if (utilisateur.role().equals("adherent")) {
+                adherents.add(utilisateur);
+            }
+        }
+        return adherents;
+    }
+
+    public ArrayList<utilisateur> getBibliothecaires() {
+        ArrayList<utilisateur> bibliothecaires = new ArrayList<>();
+        for (utilisateur utilisateur : emprunteurs) {
+            if (utilisateur.role().equals("bibliothecaire")) {
+                bibliothecaires.add(utilisateur);
+            }
+        }
+        return bibliothecaires;
+    }
+
     public void setEmprunts(ArrayList<emprunts> emprunts) {
         this.emprunts.clear();
         this.emprunts.addAll(emprunts);
@@ -59,6 +89,26 @@ public class bibliotheque {
                 empruntsEnCours.add(emprunt);
         }
         return empruntsEnCours;
+    }
+
+    public livre getLivreMaxEmprunts() {
+        livre livreMaxEmprunts = livres.get(0);
+        for (livre livre : livres) {
+            if (livre.getnbrEmprunts() > livreMaxEmprunts.getnbrEmprunts()) {
+                livreMaxEmprunts = livre;
+            }
+        }
+        return livreMaxEmprunts;
+    }
+
+    public utilisateur getEmprunteurMaxEmprunts() {
+        utilisateur emprunteurMaxEmprunts = emprunteurs.get(0);
+        for (utilisateur utilisateur : emprunteurs) {
+            if (utilisateur.getNbrEmpruntsParutilisateur() > emprunteurMaxEmprunts.getNbrEmpruntsParutilisateur()) {
+                emprunteurMaxEmprunts = utilisateur;
+            }
+        }
+        return emprunteurMaxEmprunts;
     }
 
     public emprunts getEmpruntById(int id) {
